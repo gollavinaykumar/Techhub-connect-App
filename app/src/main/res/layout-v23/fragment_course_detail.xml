@@ -1,0 +1,223 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/TechHub.Orange"
+    tools:context=".ui.details.CourseDetailFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorOnSecondary"
+        android:transitionName="@string/course_detail_transition">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/learn_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_view_course_photo"
+                android:layout_width="0dp"
+                android:layout_height="350dp"
+                android:contentDescription="@string/content_description_course_photo"
+                android:foreground="@drawable/learn_image_scrim"
+                android:scaleType="centerCrop"
+                android:transitionName="@string/poster_transition"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                android:paddingTop="@dimen/margin_high"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/learn_menu"
+                app:navigationIcon="@drawable/ic_back" />
+
+            <ImageView
+                android:id="@+id/icon_expand_course_photo"
+                android:layout_width="@dimen/icon_default_width"
+                android:layout_height="@dimen/icon_default_height"
+                android:layout_marginStart="@dimen/margin_standard"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:contentDescription="@string/content_description_expand_course_photo"
+                android:src="@drawable/arrow_expand_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_view_course_photo" />
+
+            <ImageView
+                android:id="@+id/icon_favorites"
+                android:layout_width="@dimen/icon_default_width"
+                android:layout_height="@dimen/icon_default_height"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:layout_marginEnd="@dimen/margin_standard"
+                android:contentDescription="@string/content_description_add_to_favorites"
+                android:src="@drawable/ic_favorite_selector"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_view_course_photo"
+                app:tint="@color/tech_pink_600" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_view_instructor_photo"
+                android:layout_width="@dimen/image_view_instructor_width_detail"
+                android:layout_height="@dimen/image_view_instructor_height_detail"
+                android:background="@drawable/ic_avatar_placeholder"
+                android:contentDescription="@string/content_description_instructor_photo"
+                android:foreground="@drawable/avatar_outline"
+                app:layout_constraintBottom_toBottomOf="@id/image_view_course_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_view_course_photo"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/text_view_instructor_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/grid_2"
+                android:paddingTop="@dimen/margin_low"
+                android:textAllCaps="true"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="?attr/colorSecondaryVariant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_view_instructor_photo"
+                tools:text="John Doe" />
+
+            <TextView
+                android:id="@+id/text_view_topic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/margin_high"
+                android:paddingBottom="@dimen/margin_low"
+                android:textAllCaps="true"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_instructor_name"
+                tools:text="Software Development" />
+
+            <TextView
+                android:id="@+id/text_view_course_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/grid_2"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                android:textColor="?attr/colorOnPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_topic"
+                tools:text="@sample/courses.json/data/name" />
+
+            <TextView
+                android:id="@+id/text_view_course_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:gravity="center"
+                android:padding="@dimen/grid_2"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="?attr/colorOnPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_course_name"
+                tools:text="@string/course_desc" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inset_divider"
+                android:backgroundTint="?attr/colorOnPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_course_description" />
+
+            <TextView
+                android:id="@+id/text_view_more_information"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/grid_2"
+                android:text="@string/more_information"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <TextView
+                android:id="@+id/text_view_course_steps_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/grid_2"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_more_information"
+                tools:text="@string/course_steps_information_tools" />
+
+            <View
+                android:id="@+id/also_like_background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/colorPrimarySurface"
+                android:foreground="@drawable/learn_image_scrim"
+                android:theme="@style/TechHub.Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_course_steps_info" />
+
+            <TextView
+                android:id="@+id/also_like"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/grid_2"
+                android:paddingVertical="@dimen/grid_3"
+                android:text="@string/you_ll_also_like"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?attr/colorOnPrimarySurface"
+                android:theme="@style/TechHub.Blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_course_steps_info" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_related_courses"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="@dimen/grid_4"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/grid_2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/also_like"
+                tools:listitem="@layout/list_item_related_course" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</FrameLayout>
